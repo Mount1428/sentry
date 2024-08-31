@@ -1,9 +1,0 @@
-"D:\Program Files\CMake\bin\cmake.exe" -DCMAKE_BUILD_TYPE=Debug "-DCMAKE_MAKE_PROGRAM=D:/Program Files (x86)/JetBrains/Toolbox/CLion Nova/bin/ninja/win/x64/ninja.exe" -DCMAKE_C_COMPILER=D:/Applications/gcc-arm-none-eabi-10.3-2021.10-win32/Arm-GNU-Toolchian/bin/arm-none-eabi-gcc.exe -DCMAKE_CXX_COMPILER=D:/Applications/gcc-arm-none-eabi-10.3-2021.10-win32/Arm-GNU-Toolchian/bin/arm-none-eabi-g++.exe -G Ninja -S D:\晚风\Desktop\RM\2025\sentry -B D:\晚风\Desktop\RM\2025\sentry\cmake-build-debug
--- The C compiler identification is GNU 13.2.1
--- The ASM compiler identification is GNU
--- Found assembler: D:/Applications/arm-gnu-toolchain-13.2.Rel1-mingw-w64-i686-arm-none-eabi/bin/arm-none-eabi-gcc.exe
--- The CXX compiler identification is GNU 13.2.1
-Build type: Debug
--- Configuring done (1.3s)
--- Generating done (0.0s)
--- Build files have been written to: D:/晚风/Desktop/RM/2025/sentry/cmake-build-debug
