@@ -2,5 +2,12 @@
     "C_Cpp.default.cppStandard": "c++11",
     "C_Cpp.default.cStandard": "c11",
     "C_Cpp.default.intelliSenseMode": "gcc-arm",
-    "C_Cpp.default.compilerPath": "D:\\Applications\\arm-gnu-toolchain-13.2.Rel1-mingw-w64-i686-arm-none-eabi\\bin\\arm-none-eabi-gcc.exe"
+    "C_Cpp.default.compilerPath": "D:\\Applications\\arm-gnu-toolchain-13.2.Rel1-mingw-w64-i686-arm-none-eabi\\bin\\arm-none-eabi-gcc.exe",
+    "files.associations": {
+        "bit": "c",
+        "compare": "c",
+        "limits": "c",
+        "new": "c",
+        "cstdlib": "c"
+    }
 }
