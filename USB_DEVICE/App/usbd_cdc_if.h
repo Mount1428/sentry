@@ -30,7 +30,7 @@
 #include "usbd_cdc.h"
 
 /* USER CODE BEGIN INCLUDE */
-
+#include <stdint.h>
 /* USER CODE END INCLUDE */
 
 /** @addtogroup STM32_USB_OTG_DEVICE_LIBRARY
@@ -93,7 +93,7 @@
 extern USBD_CDC_ItfTypeDef USBD_Interface_fops_FS;
 
 /* USER CODE BEGIN EXPORTED_VARIABLES */
-
+typedef void (*USBCallback)(uint16_t);  // USB事件回调函数类型
 /* USER CODE END EXPORTED_VARIABLES */
 
 /**
@@ -108,7 +108,7 @@ extern USBD_CDC_ItfTypeDef USBD_Interface_fops_FS;
 uint8_t CDC_Transmit_FS(uint8_t* Buf, uint16_t Len);
 
 /* USER CODE BEGIN EXPORTED_FUNCTIONS */
-
+uint8_t* CDCInitRxbufferNcallback(USBCallback transmit_cbk, USBCallback recv_cbk);
 /* USER CODE END EXPORTED_FUNCTIONS */
 
 /**

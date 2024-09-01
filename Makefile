@@ -103,11 +103,24 @@ Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_ioreq.c \
 Middlewares/ST/STM32_USB_Device_Library/Class/CDC/Src/usbd_cdc.c \
 Core/Src/sysmem.c \
 Core/Src/syscalls.c \
-libs/mm/mem.c
+bsp/adc/bsp_adc.c \
+bsp/can/bsp_can.c \
+bsp/dwt/bsp_dwt.c \
+bsp/gpio/bsp_gpio.c \
+bsp/iic/bsp_iic.c \
+bsp/pwm/bsp_pwm.c \
+bsp/spi/bsp_spi.c \
+bsp/usart/bsp_usart.c \
+bsp/usb/bsp_usb.c \
+libs/mm/mem.c \
+libs/log/SEGGER/RTT/SEGGER_RTT.c \
+libs/log/SEGGER/RTT/SEGGER_RTT_printf.c \
+libs/log/log.c
 
 # ASM sources
 ASM_SOURCES =  \
-startup_stm32f407xx.s
+startup_stm32f407xx.s \
+libs/log/SEGGER/RTT/SEGGER_RTT_ASM_ARMv7M.s
 
 # ASM sources
 ASMM_SOURCES = 
@@ -180,7 +193,16 @@ C_INCLUDES =  \
 -IDrivers/CMSIS/Device/ST/STM32F4xx/Include \
 -IDrivers/CMSIS/Include \
 -IMiddlewares/ST/ARM/DSP/Inc \
--Ilibs/mm
+-Ibsp/adc \
+-Ibsp/can \
+-Ibsp/dwt \
+-Ibsp/gpio \
+-Ibsp/iic \
+-Ibsp/pwm \
+-Ibsp/spi \
+-Ibsp/usart \
+-Ibsp/usb \
+-Ilibs
 
 
 # compile gcc flags
