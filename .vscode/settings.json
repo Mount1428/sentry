@@ -8,6 +8,7 @@
         "compare": "c",
         "limits": "c",
         "new": "c",
-        "cstdlib": "c"
+        "cstdlib": "c",
+        "type_traits": "c"
     }
 }
