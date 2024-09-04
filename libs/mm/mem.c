@@ -2,12 +2,11 @@
 #include "cmsis_gcc.h"
 #include <string.h>
 
-#pragma pack(1)     // 1字节对齐
-
 __attribute__((section(".ccmram"))) static uint8_t gCCMRAM[_MAX_CCMRAM_HEAP_SIZE * 1024];
 static uint32_t idx = 0;
 
 typedef struct _mem {
+    uint8_t cmd;
     uint16_t id;        // 内存块id
     enum {MEM_UNUSED = 0, MEM_USED} is_used;    // 当前内存块使用标记
     uint16_t length;    // 内存块长度
@@ -17,7 +16,6 @@ typedef struct _mem {
 
 #define _LIST_HEAD_SIZE (sizeof(_mem_list_s))       // 链表节点头大小
 
-#pragma pack()
 
 /// @brief 合并未使用内存函数
 /// @param  
@@ -45,14 +43,14 @@ void
 mem_init(void) {
     if (!idx) {
         _mem_list_s head = {
+            .cmd = 0x55,
             .id = idx++,
             .is_used = MEM_UNUSED,
             .length = _MAX_CCMRAM_HEAP_SIZE * 1024 - _LIST_HEAD_SIZE,
-            .next = nullptr,
-            .addr = gCCMRAM + head.length
+            .next = (_mem_list_s *)(gCCMRAM + _MAX_CCMRAM_HEAP_SIZE * 1024),
+            .addr = gCCMRAM + _LIST_HEAD_SIZE
         };
-
-        memcpy(gCCMRAM, &head, _LIST_HEAD_SIZE);
+        (void)memcpy(gCCMRAM, &head, _LIST_HEAD_SIZE);
     }
 }
 
@@ -69,13 +67,14 @@ mem_Malloc(uint16_t size) {
         if (_list_ptr->length >= size + _LIST_HEAD_SIZE) {
             uint8_t *addr = ((uint8_t *)_list_ptr + _LIST_HEAD_SIZE + size);
             _mem_list_s node = {
+                .cmd = 0x55,
                 .id = idx++,
                 .is_used = MEM_UNUSED,
                 .addr = addr + _LIST_HEAD_SIZE,
                 .length = _list_ptr->length - _LIST_HEAD_SIZE - size,
                 .next = _list_ptr->next
             };
-            memcpy(addr, &node, _LIST_HEAD_SIZE);
+            (void)memcpy(addr, &node, _LIST_HEAD_SIZE);
 
             _list_ptr->next = (_mem_list_s *)addr;
             _list_ptr->is_used = MEM_USED;
@@ -100,7 +99,7 @@ void *
 mem_Calloc(uint16_t size) {
     void *ptr = mem_Malloc(size);
     if (ptr != nullptr) {
-        memset(ptr, 0, size);
+        (void)memset(ptr, 0, size);
     }
     return ptr;
 }
@@ -110,7 +109,7 @@ mem_Realloc(void *ptr) {
     _mem_list_s *_ptr = (_mem_list_s *)((uint8_t *)ptr - _LIST_HEAD_SIZE);
     void *_re_ptr = mem_Malloc(_ptr->length);
     if (_re_ptr != nullptr) {
-        memcpy(_re_ptr, ptr, _ptr->length);
+        (void)memcpy(_re_ptr, ptr, _ptr->length);
         return _re_ptr;
     }
     return ptr;
