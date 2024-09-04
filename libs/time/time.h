@@ -6,6 +6,8 @@
 
 #define _time_init(CPU_Freq_mHz) DWT_Init(CPU_Freq_mHz)
 
-#define user_clock(void) DWT_GetTimeline_s(void);   // 获取当前时间，单位为秒
+#define clock_s(void) DWT_GetTimeline_s(void);   // 获取当前时间，单位为秒
+#define clock_ms(void) DWT_GetTimeline_ms(void);   // 获取当前时间，单位为秒
+#define clock_us(void) DWT_GetTimeline_us(void);   // 获取当前时间，单位为秒
 
 #endif // !_LIB_TIME_H
