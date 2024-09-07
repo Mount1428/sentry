@@ -10,8 +10,8 @@
  */
 #include "daemon.h"
 
-#include "mm/mem.h"
-#include "time/time.h"
+#include "mem/mem.h"
+#include "bsp_dwt.h"
 #include "led.h"
 #include "buzzer.h"
 #include "main.h"
@@ -43,7 +43,7 @@ void DaemonInit(void)
     BuzzerSetOctave(buzzer_ins, start_buzz, 4);
 }
 
-DaemonInstance *DaemonRegister(Daemon_Config_s *config)
+DaemonInstance *DaemonRegister(Daemon_Init_Config_s *config)
 {
     DaemonInstance *ins = (DaemonInstance *)mem_Calloc(GET_TYPE_SIZE(DaemonInstance));
     if (!ins)
@@ -52,8 +52,8 @@ DaemonInstance *DaemonRegister(Daemon_Config_s *config)
     ins->reload_count = config->reload_count ? config->reload_count : 100;
     ins->temp_count = config->init_count ? config->reload_count : 100;
     ins->offline_status = config->daemon_status;
-    ins->offline_callback = config->offline_callback;
-    ins->id = config->id;
+    ins->offline_callback = config->callback;
+    ins->id = config->owner_id;
 
     ins->temp_count += ins->reload_count;
 

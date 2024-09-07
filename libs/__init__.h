@@ -2,8 +2,8 @@
 #define _LIB_INIT_H
 
 #include "log/log.h"
-#include "mm/mem.h"
-#include "time/time.h"
+#include "mem/mem.h"
+#include "dwt_time/dwt_time.h"
 
 void
 __user_lib_init(void) {

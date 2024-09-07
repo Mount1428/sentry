@@ -72,7 +72,7 @@ typedef struct _
 
     //-----------------------------------
     // for blocked_error callback
-    void (*error_callback)(PIDInstance *pid);
+    void (*error_callback)(struct _ *pid);
 
     PID_ErrorHandler_t ERRORHandler; // 电机堵转错误回调函数
 } PIDInstance;

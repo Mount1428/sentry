@@ -69,4 +69,38 @@ float Sqrt(float x);
 /// @return 1 / Sqrt(x)
 float invSqrt(float x);
 
+/**
+ * @brief 三维向量归一化
+ * 
+ * @param v 
+ * @return float* 
+ */
+float *Norm3d(float *v);
+
+/**
+ * @brief 三维向量取模
+ * 
+ * @param v 
+ * @return float 
+ */
+float NormOf3d(float *v);
+
+/**
+ * @brief 三维向量叉乘
+ * 
+ * @param v1 
+ * @param v2 
+ * @param res 
+ */
+void Cross3d(float *v1, float *v2, float *res);
+
+/**
+ * @brief 三维向量点乘
+ * 
+ * @param v1 
+ * @param v2 
+ * @return float 
+ */
+float Dot3d(float *v1, float *v2);
+
 #endif // !_USER_LIBS_H

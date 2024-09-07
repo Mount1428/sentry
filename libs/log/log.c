@@ -4,16 +4,19 @@
 
 #include "SEGGER/Config/SEGGER_RTT_Conf.h"
 
-void LogInit(void) { SEGGER_RTT_Init(); }
+void 
+LogInit(void) { SEGGER_RTT_Init(); }
 
-void LogColorSet(const int channel, const char *color) {
+void 
+LogColorSet(const int channel, const char *color) {
     if (!(channel == dbgout || channel == dbgwarn || channel == dbgerr)) {
         return;
     }
     SEGGER_RTT_WriteString(channel, color);
 }
 
-int printLog(const int channel, const char *fmt, ...) {
+__attribute__((format(printf, 2, 3))) int 
+printLog(const int channel, const char *fmt, ...) {
     if (!(channel == dbgout || channel == dbgwarn || channel == dbgerr)) {
         return -1;
     }

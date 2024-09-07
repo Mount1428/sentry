@@ -33,9 +33,9 @@ typedef struct
     uint16_t init_count;           // 初始化等待值
     Daemon_Status_e daemon_status; // Daemon模块指向实例的状态
 
-    offline_callback offline_callback; // 离线错误回调函数
-    void *id;                          // 父实例指针，用于触发离线错误回调函数时快速定位离线模块
-} Daemon_Config_s;
+    offline_callback callback; // 离线错误回调函数
+    void *owner_id;                          // 父实例指针，用于触发离线错误回调函数时快速定位离线模块
+} Daemon_Init_Config_s;
 
 /// @brief Daemon模块初始化函数
 /// @param
@@ -44,7 +44,7 @@ void DaemonInit(void);
 /// @brief Daemon实例注册函数
 /// @param config 初始化配置
 /// @return DaemonInstance* 返回实例指针
-DaemonInstance *DaemonRegister(Daemon_Config_s *config);
+DaemonInstance *DaemonRegister(Daemon_Init_Config_s *config);
 
 /// @brief 喂狗函数
 /// @param ins

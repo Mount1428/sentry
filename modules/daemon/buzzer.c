@@ -4,10 +4,10 @@
 
 #include "buzzer.h"
 
-#include "time/time.h"
+#include "bsp_dwt.h"
 #include "bsp_pwm.h"
 #include "cmsis_os2.h"
-#include "mm/mem.h"
+#include "mem/mem.h"
 
 static BuzzerInstance *_buzzer = nullptr;
 static uint8_t idx = 0;

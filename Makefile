@@ -112,10 +112,33 @@ bsp/pwm/bsp_pwm.c \
 bsp/spi/bsp_spi.c \
 bsp/usart/bsp_usart.c \
 bsp/usb/bsp_usb.c \
-libs/mm/mem.c \
+libs/mem/mem.c \
 libs/log/SEGGER/RTT/SEGGER_RTT.c \
 libs/log/SEGGER/RTT/SEGGER_RTT_printf.c \
-libs/log/log.c
+libs/log/log.c \
+libs/algorithm/pid/pid.c \
+libs/algorithm/user_libs/user_libs.c \
+modules/daemon/daemon.c \
+modules/daemon/led.c \
+modules/daemon/buzzer.c \
+modules/BMI088/bmi088.c \
+modules/can_comm/can_comm.c \
+modules/ist8310/ist8310.c \
+modules/master_machine/master_process.c \
+modules/master_machine/master_protocol.c \
+modules/message_center/message_center.c \
+modules/motor/motor_task.c \
+modules/motor/DJIMoter/dji_motor.c \
+modules/motor/HTmotor/HT04.c \
+modules/motor/LKmotor/LK9025.c \
+modules/motor/servo_motor/servo_motor \
+modules/motor/step_motor/step_motor.c \
+modules/referee/crc_ref.c \
+modules/referee/referee_communication.c \
+modules/referee/referee_task.c \
+modules/referee/referee_UI.c \
+modules/referee/rm_referee.c \
+-Imodules/remote/remote_control.c \
 
 # ASM sources
 ASM_SOURCES =  \
@@ -170,6 +193,7 @@ C_DEFS =  \
 -DUSE_HAL_DRIVER \
 -DSTM32F407xx \
 -DARM_MATH_CM4 \
+-D__FPU_PRESENT=1U \
 -DARM_MATH_MATRIX_CHECK \
 -DARM_MATH_ROUNDING 
 
@@ -202,7 +226,23 @@ C_INCLUDES =  \
 -Ibsp/spi \
 -Ibsp/usart \
 -Ibsp/usb \
--Ilibs
+-Ilibs \
+-Ilibs/algorithm \
+-Imodules/daemon \
+-Imodules/BMI088 \
+-Imodules/can_comm \
+-Imodules/ist8310 \
+-Imodules/master_machine \
+-Imodules/message_center \
+-Imodules/motor \
+-Imodules/motor/DJIMoter \
+-Imodules/motor/HTmotor \
+-Imodules/motor/LKmotor \
+-Imodules/motor/servo_motor \
+-Imodules/motor/step_motor \
+-Imodules/referee \
+-Imodules/remote \
+-Iapplication
 
 
 # compile gcc flags

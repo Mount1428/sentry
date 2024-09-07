@@ -11,8 +11,12 @@
                 "_UNICODE"
             ],
             "intelliSenseMode": "gcc-arm",
-            "cStandard": "c11",
-            "cppStandard": "c++11"
+            "cStandard": "gnu11",
+            "cppStandard": "gnu++11",
+            "mergeConfigurations": true,
+            "browse": {
+                "limitSymbolsToIncludedHeaders": true
+            }
         }
     ],
     "version": 4

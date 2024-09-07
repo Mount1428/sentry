@@ -17,14 +17,12 @@
 
 #include "FreeRTOS.h"
 #include "arm_math.h"
-#include "dwt/bsp_dwt.h"
-#include "mem.h"
+#include "bsp_dwt.h"
+#include "mem/mem.h"
 
 #ifndef abs
 #define abs(x) ((x > 0) ? (x) : -(x))
 #endif
-
-static uint8_t idx = 0;
 
 /* ----------------------------下面是pid优化环节的实现---------------------------- */
 
@@ -161,7 +159,6 @@ PIDInstance *PIDRegister(const PID_Init_Config_s *config)
     pid->Derivative_LPF_RC = config->Derivative_LPF_RC;
     pid->error_callback = config->error_callback;
 
-    idx++;
     return pid;
 }
 
